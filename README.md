@@ -61,6 +61,7 @@ A modern PostgreSQL database management tool built with Next.js and AG Grid Comm
 ### UI & Components
 
 - [AG Grid Community](https://www.ag-grid.com/) `v33.1.1` - Feature-rich JavaScript data grid
+- [Ant Design](https://ant.design/) `v5.0.0` - Enterprise-level UI design language
 - [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
 - [React](https://reactjs.org/) - JavaScript library for building user interfaces
 
@@ -100,30 +101,7 @@ cd pg-flex-edit
 yarn install
 ```
 
-3. **Configure environment**
-
-```bash
-cp .env.example .env
-```
-
-4. **Set up environment variables**
-
-```env
-# Application
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-
-# Database Configuration
-DB_HOST=localhost
-DB_PORT=5432
-DB_USER=postgres
-DB_PASSWORD=postgres
-DB_NAME=postgres
-
-# Security
-API_KEY=your_api_key_here
-```
-
-5. **Launch the application**
+3. **Launch the application**
 
 ```bash
 yarn dev
@@ -135,13 +113,21 @@ yarn dev
 
 ```
 src/
-├── app/                  # Next.js application
-│   ├── api/             # API routes
-│   ├── components/      # React components
-│   └── pages/           # Application pages
-├── styles/              # Global styles
-├── types/               # TypeScript type definitions
-└── utils/               # Utility functions
+├── app/                    # Next.js application
+│   ├── api/               # API routes
+│   │   ├── db/           # Database API endpoints
+│   │   ├── table-data/   # Table data endpoints
+│   │   └── table-stats/  # Table statistics endpoints
+│   ├── components/        # React components
+│   │   ├── DataTable/    # AG Grid table component
+│   │   ├── Sidebar/      # Navigation sidebar
+│   │   └── ui/           # UI components (buttons, inputs etc.)
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Core utilities and helpers
+│   ├── providers/        # React context providers
+│   ├── styles/           # Global styles
+│   └── types/            # TypeScript type definitions
+└── public/               # Static assets
 ```
 
 ## 📝 License
