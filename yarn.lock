@@ -2,6 +2,45 @@
 # yarn lockfile v1
 
 
+"@ag-grid-community/client-side-row-model@^32.3.4":
+  version "32.3.4"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/client-side-row-model/-/client-side-row-model-32.3.4.tgz#235f87a177665d5152bcd12c7c4c0d3dd53e0024"
+  integrity sha512-AZyLSemPyaCJi8wPJ/wvwow6v4MZKMkg9152TameKvaEf+m+N+gWJNKb1dQoqjgWCgEByqvM6SO8dJtYRrdr/A==
+  dependencies:
+    "@ag-grid-community/core" "32.3.4"
+    tslib "^2.3.0"
+
+"@ag-grid-community/core@32.3.4", "@ag-grid-community/core@^32.3.4":
+  version "32.3.4"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/core/-/core-32.3.4.tgz#a8c4f9e17f809a02c04b9028298947e43b0c203c"
+  integrity sha512-g1CJOQuA4uRx1U3VP9SZLnTJBYdMwCTM348FsubdI6anaqxnHv3X0kridq9v1v26qXbl7yytm5X3v1hPcV8wVA==
+  dependencies:
+    ag-charts-types "10.3.4"
+    tslib "^2.3.0"
+
+"@ag-grid-community/infinite-row-model@^32.3.4":
+  version "32.3.4"
+  resolved "https://registry.yarnpkg.com/@ag-grid-community/infinite-row-model/-/infinite-row-model-32.3.4.tgz#564a620e2780913906e1a7cb2c96482f87e6eaa5"
+  integrity sha512-GWlUoU9UPGp0ZYdBCiV8R+A/mwdYweoB3HsVOEeQiNZYDC1TQJxiCSKBCCg9qk3KDY+VbJ/6ebV/BUN7cLwIuQ==
+  dependencies:
+    "@ag-grid-community/core" "32.3.4"
+    tslib "^2.3.0"
+
+"@ag-grid-enterprise/core@32.3.4":
+  version "32.3.4"
+  resolved "https://registry.yarnpkg.com/@ag-grid-enterprise/core/-/core-32.3.4.tgz#5454e1696b1f668c8a8d650c9e437878e266b726"
+  integrity sha512-qy6JcfhkCW2VR2oQsV3laxs2exOKudFEur5I5chUhusLu2gFF/j9sJ4iSfFG0wpo24yTPt6MsEwI7EsGJ270lQ==
+  dependencies:
+    "@ag-grid-community/core" "32.3.4"
+
+"@ag-grid-enterprise/server-side-row-model@^32.3.4":
+  version "32.3.4"
+  resolved "https://registry.yarnpkg.com/@ag-grid-enterprise/server-side-row-model/-/server-side-row-model-32.3.4.tgz#0baa4e15a9aacca53801f61868c417e1387cdb21"
+  integrity sha512-QYSoNN1N/hZ3TkA48OEciXTGhbVrC0/cstlM1BS7iXDwznIWAlLR5fB+mJ/3lxI443D9qg7lLoo5KbM/npBWRw==
+  dependencies:
+    "@ag-grid-community/core" "32.3.4"
+    "@ag-grid-enterprise/core" "32.3.4"
+
 "@alloc/quick-lru@^5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
@@ -761,54 +800,30 @@ acorn@^8.14.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.14.1.tgz#721d5dc10f7d5b5609a891773d47731796935dfb"
   integrity sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==
 
-ag-charts-community@11.1.1:
-  version "11.1.1"
-  resolved "https://registry.yarnpkg.com/ag-charts-community/-/ag-charts-community-11.1.1.tgz#7f25a7dd12aeaa9c07a2f279655759abf7311b94"
-  integrity sha512-ja+JyTICjo2Ic3dG90f3ylD7EqF6Vet7JtiPZa6b9Ffov7VP1DnHUmZsJKfzlQVrWMR6H8Yw/Ij2izLy3hxGZA==
-  dependencies:
-    ag-charts-core "11.1.1"
-    ag-charts-locale "11.1.1"
-    ag-charts-types "11.1.1"
-
-ag-charts-core@11.1.1:
-  version "11.1.1"
-  resolved "https://registry.yarnpkg.com/ag-charts-core/-/ag-charts-core-11.1.1.tgz#c97bf654c38c7b4a21f1281484d50f8fc87123e1"
-  integrity sha512-18VuqqzA2uC/flzz/Ry/ByYVWbbJA9/IlO5qLokdpXqLzWfO8FVWcCJ7IOu9+L+LRhREyqSCnVaa+THCVCe14w==
-
-ag-charts-enterprise@11.1.1:
-  version "11.1.1"
-  resolved "https://registry.yarnpkg.com/ag-charts-enterprise/-/ag-charts-enterprise-11.1.1.tgz#51c25ba2401e61b97f298b4e7e53967674576f3c"
-  integrity sha512-J4vtfxfvJlynuV5jYkdF97dUjZLoMvhoy3Df6StXKOvGionpaBnx6cKcxA3U7sLw6z6LO1loFM/1ftredW/4Aw==
-  dependencies:
-    ag-charts-community "11.1.1"
-    ag-charts-core "11.1.1"
-
-ag-charts-locale@11.1.1:
-  version "11.1.1"
-  resolved "https://registry.yarnpkg.com/ag-charts-locale/-/ag-charts-locale-11.1.1.tgz#f4e84a68d2d01989128005306fa21a725b351e38"
-  integrity sha512-yEsC83zUTQ29GG8absKfiVNmDV0NkeoUx1uYy9Qyor/r5zU0B9Ve8/pHSB9jK0OYGH7/ayu1BNBzrXacPr2QPA==
+ag-charts-types@10.3.4:
+  version "10.3.4"
+  resolved "https://registry.yarnpkg.com/ag-charts-types/-/ag-charts-types-10.3.4.tgz#190196673db80c1ce20a0ef7a81a3b50ead8a8fc"
+  integrity sha512-MU+3gvKn1jEyLlMHS0Vu0nHmIQxiVJAnA6ftUatLZvV0c7hOWap4VWghqZ0cVZUJsCdMI59Iuq1u3xquKv4LOQ==
 
 ag-charts-types@11.1.1:
   version "11.1.1"
   resolved "https://registry.yarnpkg.com/ag-charts-types/-/ag-charts-types-11.1.1.tgz#2d5132978248c9422b7129df6d2c3537c1ad99c5"
   integrity sha512-bRmUcf5VVhEEekhX8Vk0NSwa8Te8YM/zchjyYKR2CX4vDYiwoohM1Jg9RFvbIhVbLC1S6QrPEbx5v2C6RDfpSA==
 
-ag-grid-community@33.1.1:
+ag-grid-community@33.1.1, ag-grid-community@^33.1.1:
   version "33.1.1"
   resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-33.1.1.tgz#04f0317317ea1d35f128dc1a4f8e70a04aa27774"
   integrity sha512-CNubIro0ipj4nfQ5WJPG9Isp7UI6MMDvNzrPdHNf3W+IoM8Uv3RUhjEn7xQqpQHuu6o/tMjrqpacipMUkhzqnw==
   dependencies:
     ag-charts-types "11.1.1"
 
-ag-grid-enterprise@33.1.1:
+ag-grid-react@^33.1.1:
   version "33.1.1"
-  resolved "https://registry.yarnpkg.com/ag-grid-enterprise/-/ag-grid-enterprise-33.1.1.tgz#168df121f85827c5382a1078a78df62aff17ba28"
-  integrity sha512-oo3/mhL6X9EG5gKEPKn8r4c/SH0+rXQ99Ug60AXgUpPXL7VfbUhGVNQFsP8ESpTcHeWAyff2hCe0F0aHh29p5Q==
+  resolved "https://registry.yarnpkg.com/ag-grid-react/-/ag-grid-react-33.1.1.tgz#58346ba67bb595905816775d02dfda40c63ceb5f"
+  integrity sha512-xJ+t2gpqUUwpFqAeDvKz/GLVR4unkOghfQBr8iIY9RAdGFarYFClJavsOa8XPVVUqEB9OIuPVFnOdtocbX0jeA==
   dependencies:
     ag-grid-community "33.1.1"
-  optionalDependencies:
-    ag-charts-community "11.1.1"
-    ag-charts-enterprise "11.1.1"
+    prop-types "^15.8.1"
 
 ajv@^6.12.4:
   version "6.12.6"
@@ -1108,11 +1123,6 @@ client-only@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/client-only/-/client-only-0.0.1.tgz#38bba5d403c41ab150bff64a95c85013cf73bca1"
   integrity sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==
-
-clsx@^2.0.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.1.tgz#eed397c9fd8bd882bfb18deab7102049a2f32999"
-  integrity sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==
 
 color-convert@^2.0.1:
   version "2.0.1"
@@ -3065,13 +3075,6 @@ rc-virtual-list@^3.14.2, rc-virtual-list@^3.5.1, rc-virtual-list@^3.5.2:
     rc-resize-observer "^1.0.0"
     rc-util "^5.36.0"
 
-react-data-grid@^7.0.0-beta.50:
-  version "7.0.0-beta.50"
-  resolved "https://registry.yarnpkg.com/react-data-grid/-/react-data-grid-7.0.0-beta.50.tgz#2ed7b112a79c6148d2df14aeab55d34005ec9aed"
-  integrity sha512-o0/3rJeLqY9v6Y9xbrGcqzuXDqNfbyjcpIMZUxFubeBXEDyngAoif0i7CwpLpsknnuzpGN+0AUUzIJ716kWHNQ==
-  dependencies:
-    clsx "^2.0.0"
-
 react-dom@^19.0.0:
   version "19.0.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-19.0.0.tgz#43446f1f01c65a4cd7f7588083e686a6726cfb57"
@@ -3523,7 +3526,7 @@ tsconfig-paths@^3.15.0:
     minimist "^1.2.6"
     strip-bom "^3.0.0"
 
-tslib@^2.4.0, tslib@^2.8.0:
+tslib@^2.3.0, tslib@^2.4.0, tslib@^2.8.0:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==

@@ -5,6 +5,10 @@ import Link from "next/link";
 import { getActiveConnection, getSavedConnections, setActiveConnection } from "@/lib/session";
 import { getTables, getDatabaseInfo } from "@/lib/db";
 import { ConnectionDetails } from "@/components/connection-form";
+import { AgGridReact } from 'ag-grid-react';
+import { AllCommunityModule, ColDef, ModuleRegistry } from 'ag-grid-community';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
 import {
     Card,
     Row,
@@ -39,8 +43,7 @@ import {
     ExclamationCircleOutlined,
     SearchOutlined,
 } from "@ant-design/icons";
-import { DataGrid } from 'react-data-grid';
-import 'react-data-grid/lib/styles.css';
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 const { Title, Text } = Typography;
 
@@ -164,7 +167,7 @@ interface DatabaseInfo {
 
 interface TableInfo {
     name: string;
-    rowCount: number;
+    rowCount: string;
     size: string;
 }
 
@@ -236,10 +239,19 @@ export default function DatabaseOverviewPage() {
         const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
         setIsDarkMode(darkModeQuery.matches);
 
-        const handler = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
-        darkModeQuery.addEventListener('change', handler);
+        // Dark mode değiştiğinde html elementine dark class'ı ekle/kaldır
+        const updateTheme = (e: MediaQueryListEvent | MediaQueryList) => {
+            setIsDarkMode(e.matches);
+            document.documentElement.classList.toggle('dark', e.matches);
+        };
 
-        return () => darkModeQuery.removeEventListener('change', handler);
+        // Sayfa yüklendiğinde mevcut durumu kontrol et
+        updateTheme(darkModeQuery);
+
+        // Event listener ekle
+        darkModeQuery.addEventListener('change', updateTheme);
+
+        return () => darkModeQuery.removeEventListener('change', updateTheme);
     }, []);
 
     const loadDatabaseInfo = async (connectionDetails: ConnectionDetails) => {
@@ -282,7 +294,7 @@ export default function DatabaseOverviewPage() {
             // Tablolar için örnek veriler oluştur
             const tablesWithInfo = tablesList.map(table => ({
                 name: table,
-                rowCount: Math.floor(Math.random() * 10000),
+                rowCount: Math.floor(Math.random() * 10000).toLocaleString(),
                 size: `${Math.floor(Math.random() * 100)} MB`
             }));
 
@@ -334,31 +346,34 @@ export default function DatabaseOverviewPage() {
         }
     };
 
-    const columns = [
+    const columns: ColDef<TableInfo>[] = [
         {
-            key: 'name',
-            name: 'Table Name',
-            width: 200,
-            formatter: ({ row }: { row: TableInfo }) => (
-                <Link href={`/dashboard/${databaseName}/${row.name}`}>
+            field: 'name',
+            headerName: 'Table Name',
+            flex: 2,
+            minWidth: 200,
+            cellRenderer: (params: { value: string }) => (
+                <Link href={`/dashboard/${databaseName}/${params.value}`} style={{ color: 'var(--color-primary)' }}>
                     <span className="flex items-center">
                         <TableOutlined className="mr-2" />
-                        {row.name}
+                        {params.value}
                     </span>
                 </Link>
             ),
             sortable: true
         },
         {
-            key: 'rowCount',
-            name: 'Row Count',
-            width: 150,
+            field: 'rowCount',
+            headerName: 'Row Count',
+            flex: 1,
+            minWidth: 150,
             sortable: true
         },
         {
-            key: 'size',
-            name: 'Size',
-            width: 150,
+            field: 'size',
+            headerName: 'Size',
+            flex: 1,
+            minWidth: 150,
             sortable: true
         }
     ];
@@ -400,20 +415,26 @@ export default function DatabaseOverviewPage() {
                                         allowClear
                                     />
                                 </div>
-                                <div style={{ height: 500 }}>
-                                    <DataGrid
-                                        rows={tables.filter(table =>
-                                            table.name.toLowerCase().includes(quickSearch.toLowerCase())
-                                        )}
-                                        columns={columns}
-                                        className={isDarkMode ? 'rdg-dark' : 'rdg-light'}
-                                        rowHeight={35}
-                                        headerRowHeight={45}
-                                        defaultColumnOptions={{
-                                            resizable: true,
-                                            sortable: true
-                                        }}
-                                    />
+                                <div style={{ height: '600px', width: '100%' }} className="border border-solid border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden bg-white dark:bg-gray-800">
+                                    <div className={`ag-theme-alpine h-full w-full ${isDarkMode ? 'ag-theme-alpine-dark' : ''}`}>
+                                        <AgGridReact
+                                            rowData={tables.filter(table =>
+                                                table.name.toLowerCase().includes(quickSearch.toLowerCase())
+                                            )}
+                                            columnDefs={columns}
+                                            defaultColDef={{
+                                                resizable: true,
+                                                sortable: true,
+                                                flex: 1,
+                                                minWidth: 100
+                                            }}
+                                            onGridReady={(params) => {
+                                                params.api.sizeColumnsToFit();
+                                            }}
+                                            domLayout='normal'
+                                            theme="legacy"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         )
@@ -608,7 +629,10 @@ export default function DatabaseOverviewPage() {
                                                 text={getMaintenanceStatus(dbInfo.lastVacuum, dbInfo.lastAnalyze).status}
                                             />
                                         </div>
-                                        <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-md">
+                                        <div className="p-3 rounded-md"
+                                            style={{
+                                                backgroundColor: getMaintenanceStatus(dbInfo.lastVacuum, dbInfo.lastAnalyze).color === "green" ? "var(--background)" : getMaintenanceStatus(dbInfo.lastVacuum, dbInfo.lastAnalyze).color === "orange" ? "var(--background)" : "var(--background)"
+                                            }}>
                                             {getMaintenanceStatus(dbInfo.lastVacuum, dbInfo.lastAnalyze).color === "green" ? (
                                                 <div className="flex items-center text-green-600 dark:text-green-400">
                                                     <CheckCircleOutlined className="mr-2" />
