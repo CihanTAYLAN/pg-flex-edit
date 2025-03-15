@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "antd/dist/reset.css";
+@import "react-data-grid/lib/styles.css";
 
 :root {
 	--foreground-rgb: 0, 0, 0;
@@ -23,6 +24,15 @@ body {
 }
 
 /* React Data Grid Styles */
+.rdg {
+	block-size: 100%;
+	border: 1px solid var(--rdg-border-color);
+	box-sizing: border-box;
+	background-color: var(--rdg-background-color);
+	color: var(--rdg-color);
+	font-size: var(--rdg-font-size);
+}
+
 .rdg-light {
 	--rdg-color: #000;
 	--rdg-border-color: #ddd;
@@ -34,13 +44,20 @@ body {
 	--rdg-font-size: 14px;
 }
 
-.dark .rdg-light {
+.rdg-dark {
+	--rdg-background-color: #1f1f1f;
+	--rdg-header-background-color: #2f2f2f;
+	--rdg-row-hover-background-color: #3f3f3f;
+	--rdg-row-selected-background-color: #4f4f4f;
+	--rdg-border-color: #4f4f4f;
 	--rdg-color: #fff;
-	--rdg-border-color: #444;
-	--rdg-background-color: #1f2937;
-	--rdg-header-background-color: #111827;
-	--rdg-row-hover-background-color: #374151;
-	--rdg-row-selected-background-color: #4b5563;
-	--rdg-selection-color: #2563eb;
-	--rdg-font-size: 14px;
+	color: var(--rdg-color);
+}
+
+.rdg-dark a {
+	color: #1890ff;
+}
+
+.rdg-dark a:hover {
+	color: #40a9ff;
 }

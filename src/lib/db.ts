@@ -90,6 +90,26 @@ export async function getTableData(connectionDetails: ConnectionDetails, tableNa
 	}
 }
 
+// Get server information
+export async function getServerInfo(connectionDetails: ConnectionDetails) {
+	try {
+		return await callDbApi("getServerInfo", { connectionDetails });
+	} catch (error) {
+		console.error("Error fetching server information:", error);
+		throw error;
+	}
+}
+
+// Get database information
+export async function getDatabaseInfo(connectionDetails: ConnectionDetails) {
+	try {
+		return await callDbApi("getDatabaseInfo", { connectionDetails });
+	} catch (error) {
+		console.error("Error fetching database information:", error);
+		throw error;
+	}
+}
+
 // Insert a new row
 export async function insertRow(connectionDetails: ConnectionDetails, tableName: string, rowData: Record<string, unknown>) {
 	try {
