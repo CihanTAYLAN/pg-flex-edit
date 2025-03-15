@@ -1,63 +1,176 @@
-# Pg-Flex-Edit: PostgreSQL Management Interface
+<div align="center">
+<h1>PG Flex Edit</h1>
+<h4>Next.js + TypeScript + PostgreSQL + AG Grid Community + Tailwind CSS</h4>
 
-A modern PostgreSQL management interface built with Next.js 14, allowing users to manage their database efficiently with minimal clicks.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.js-v15.2.2-black.svg)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-v5.0.0-blue.svg)](https://www.typescriptlang.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-v16.0-blue.svg)](https://www.postgresql.org/)
+[![AG Grid](https://img.shields.io/badge/AG_Grid-v33.1.1-green.svg)](https://www.ag-grid.com/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
-## Features
+<p align="center">
+  <img src="https://raw.githubusercontent.com/vercel/next.js/canary/docs/public/images/next.svg" width="120" alt="Next.js Logo" />
+</p>
 
-- **Modern UI**: Clean and responsive interface with dark/light mode support
-- **Connection Management**: Save, switch between, and delete database connections
-- **Table Navigation**: Browse tables in your PostgreSQL database
-- **Data Management**: View, add, edit, and delete rows in your tables
-- **Table Structure**: View table schema and column details
+A modern PostgreSQL database management tool built with Next.js and AG Grid Community. Features a beautiful UI, powerful data manipulation capabilities, and real-time updates.
 
-## Technologies Used
+[Features](#-features) •
+[Technologies](#-technologies) •
+[Getting Started](#-getting-started) •
+[Documentation](#-documentation) •
+[Contributing](#-contributing) •
+[Support](#-support--community)
 
-- **Next.js 14** with App Router and Server Actions
-- **React Server Components (RSC)** for optimized performance
-- **Tailwind CSS** for styling
-- **react-data-grid** for table data management
-- **PostgreSQL** client for database connectivity
-- **Local Storage** for connection persistence
+</div>
 
-## Getting Started
+## ✨ Features
+
+### Core Capabilities
+
+- 🚀 Modern, responsive UI built with **Next.js** and **Tailwind CSS**
+- 📊 Advanced data grid functionality with **AG Grid Community**
+- 🔄 Real-time data updates and filtering
+- 🗄️ Direct PostgreSQL database connection
+- 📱 Mobile-friendly interface
+
+### Developer Experience
+
+- 🛠️ Full TypeScript support with strict typing
+- 🎨 Customizable themes and layouts
+- 🔍 Basic search and filtering capabilities
+- 📊 Server-side pagination and sorting
+- 🔒 Secure database connection handling
+
+### Additional Features
+
+- 📋 Copy/paste functionality
+- 🔍 Basic filtering options
+- 📊 Data export capabilities
+- 🎨 Dark/Light theme support
+- 🔄 Auto-refresh functionality
+
+## 🔧 Technologies
+
+### Core Infrastructure
+
+- [Next.js](https://nextjs.org/) `v15.2.2` - React framework for production-grade applications
+- [TypeScript](https://www.typescriptlang.org/) `v5.0.0` - Typed superset of JavaScript
+- [Node.js](https://nodejs.org/) `v18+` - JavaScript runtime
+
+### UI & Components
+
+- [AG Grid Community](https://www.ag-grid.com/) `v33.1.1` - Feature-rich JavaScript data grid
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [React](https://reactjs.org/) - JavaScript library for building user interfaces
+
+### Database & Data Management
+
+- [PostgreSQL](https://www.postgresql.org/) `v16.0` - Advanced open-source database
+- [node-postgres](https://node-postgres.com/) - PostgreSQL client for Node.js
+
+### Development & Testing
+
+- [ESLint](https://eslint.org/) - JavaScript linting utility
+- [Prettier](https://prettier.io/) - Code formatter
+- [Jest](https://jestjs.io/) - JavaScript testing framework
+
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18.17 or later
+Before you begin, ensure you have the following installed:
+
+- Node.js `v18` or higher
 - Yarn package manager
 - PostgreSQL database
 
-### Installation
+### Quick Start
 
-1. Clone the repository:
+1. **Clone the repository**
 
-   ```bash
-   git clone https://github.com/yourusername/pg-flex-edit.git
-   cd pg-flex-edit
-   ```
+```bash
+git clone https://github.com/cihantaylan/pg-flex-edit.git
+cd pg-flex-edit
+```
 
-2. Install dependencies:
+2. **Install dependencies**
 
-   ```bash
-   yarn install
-   ```
+```bash
+yarn install
+```
 
-3. Start the development server:
+3. **Configure environment**
 
-   ```bash
-   yarn dev
-   ```
+```bash
+cp .env.example .env
+```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. **Set up environment variables**
 
-## Usage
+```env
+# Application
+NEXT_PUBLIC_APP_URL=http://localhost:3000
 
-1. Enter your PostgreSQL connection details on the welcome page
-2. Browse your database tables in the sidebar
-3. Click on a table to view and manage its data
-4. Use the tabs to switch between data view and structure view
-5. Add, edit, or delete rows in the data view
+# Database Configuration
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=postgres
+DB_PASSWORD=postgres
+DB_NAME=postgres
 
-## License
+# Security
+API_KEY=your_api_key_here
+```
 
-MIT
+5. **Launch the application**
+
+```bash
+yarn dev
+```
+
+## 📚 Documentation
+
+### Project Structure
+
+```
+src/
+├── app/                  # Next.js application
+│   ├── api/             # API routes
+│   ├── components/      # React components
+│   └── pages/           # Application pages
+├── styles/              # Global styles
+├── types/               # TypeScript type definitions
+└── utils/               # Utility functions
+```
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'feat: Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 💬 Support & Community
+
+- 📫 Author: Cihan TAYLAN
+  - Website: [cihantaylan.com](https://cihantaylan.com)
+  - GitHub: [@cihantaylan](https://github.com/cihantaylan)
+  - LinkedIn: [cihantaylan](https://www.linkedin.com/in/cihantaylan/)
+
+### Issue Reporting
+
+Found a bug or have a feature request? Please open an issue on [GitHub](https://github.com/cihantaylan/pg-flex-edit/issues) or reach out on [X](https://x.com/cihantaylan24).
+
+---
+
+<div align="center">
+  <sub>Built with ❤️ by Cihan TAYLAN</sub>
+  <br>
+  ⭐ Don't forget to star this project if you found it helpful!
+</div>

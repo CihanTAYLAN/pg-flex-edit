@@ -1,10 +1,6 @@
 import { NextResponse } from "next/server";
 import { Pool } from "pg";
 
-interface DatabaseError extends Error {
-	message: string;
-}
-
 export async function POST(request: Request) {
 	try {
 		const { connection, table } = await request.json();

@@ -2,6 +2,7 @@
 import { Suspense } from "react";
 import { useParams } from "next/navigation";
 import DataTable from "@/components/DataTable";
+import { ConnectionDetails } from "../../../../components/connection-form";
 
 export default function TablePage() {
     const params = useParams();
@@ -16,7 +17,7 @@ export default function TablePage() {
         if (!connections) {
             throw new Error("Connections not found");
         }
-        const activeConnection = JSON.parse(connections).find((connection: any) => connection.id === activeConnectionId);
+        const activeConnection = JSON.parse(connections).find((connection: ConnectionDetails) => connection.id === activeConnectionId);
         connection = activeConnection;
     } catch (error) {
         console.error("Connection parameter parsing failed:", error);

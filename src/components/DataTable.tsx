@@ -1,12 +1,8 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AgGridReact } from "ag-grid-react";
-import { ColDef, GetRowIdFunc, GetRowIdParams, GridReadyEvent } from "ag-grid-community";
-import { ModuleRegistry } from "@ag-grid-community/core";
-import { ServerSideRowModelModule } from "@ag-grid-enterprise/server-side-row-model";
+import { ColDef, GetRowIdFunc, GetRowIdParams, IDatasource, IGetRowsParams, InfiniteRowModelModule } from "ag-grid-community";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-
-ModuleRegistry.registerModules([ServerSideRowModelModule]);
 
 interface Connection {
     name: string;
@@ -26,6 +22,7 @@ interface Props {
 export default function DataTable({ connection, table }: Props) {
     const gridRef = useRef<AgGridReact>(null);
     const [columnDefs, setColumnDefs] = useState<ColDef[]>([]);
+    const [dataSource, setDataSource] = useState<IDatasource>();
 
     useEffect(() => {
         const fetchColumns = async () => {
@@ -59,9 +56,8 @@ export default function DataTable({ connection, table }: Props) {
         fetchColumns();
     }, [connection, table]);
 
-    const onGridReady = useCallback((params: GridReadyEvent) => {
-        const dataSource: IDatasource = {
-            rowCount: undefined,
+    useEffect(() => {
+        const ds: IDatasource = {
             getRows: async (params: IGetRowsParams) => {
                 try {
                     const response = await fetch("/api/table-data", {
@@ -89,8 +85,7 @@ export default function DataTable({ connection, table }: Props) {
                 }
             }
         };
-
-        params.api.setDatasource(dataSource);
+        setDataSource(ds);
     }, [connection, table]);
 
     const defaultColDef = useMemo(() => ({
@@ -108,7 +103,7 @@ export default function DataTable({ connection, table }: Props) {
     return (
         <div className="ag-theme-alpine-dark w-full h-[600px]">
             <AgGridReact
-                modules={modules}
+                modules={[InfiniteRowModelModule]}
                 ref={gridRef}
                 columnDefs={columnDefs}
                 defaultColDef={defaultColDef}
@@ -117,7 +112,7 @@ export default function DataTable({ connection, table }: Props) {
                 paginationPageSize={20}
                 cacheBlockSize={20}
                 getRowId={getRowId}
-                onGridReady={onGridReady}
+                datasource={dataSource}
                 domLayout='normal'
                 theme="legacy"
             />
